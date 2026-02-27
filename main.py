@@ -1,8 +1,9 @@
 from flask import Flask,jsonify,render_template,request,redirect,flash
 from models import db,create_tables,Company,Item,Purchase,Sales
 from flask_migrate import Migrate
-
+#store the flask in a variable
 app = Flask(__name__) 
+#The secret key to that prevent the others from editing the flash message
 app.secret_key = "namma_kadai_secret_key"
 
 # ✅ DATABASE CONFIGURATION
@@ -43,7 +44,7 @@ def add_item():
             db.session.rollback()
             flash("Sorry item alredy Exits..!", "error")
             return redirect('/home')
-                    
+
 
 @app.route('/home/delete/<int:item_id>',methods=['DELETE'])
 def delete_item(item_id):
@@ -55,6 +56,114 @@ def delete_item(item_id):
     db.session.commit()
 
     return jsonify({"message": "Item deleted successfully"}), 200
+
+
+@app.route('/home/edit/<int:item_id>', methods=['GET', 'POST'])
+def edit_item(item_id):
+    item = Item.query.get(item_id)
+
+    if request.method == "POST":
+        new_name = request.form.get("item_input")
+
+        if not new_name or new_name.strip() == "":
+            flash("Item name cannot be empty!", "error")
+            return redirect(f"/home/edit/{item_id}")
+
+        item.item_name = new_name
+        db.session.commit()
+
+        flash("Item updated successfully!", "success")
+        return redirect('/home')
+
+    return render_template('edit.html', item=item)
+
+
+
+
+@app.route('/purchase', methods=['GET'])
+def get_purchase_page():
+    purchases = Purchase.query.all() #fetch all purchase records
+    return render_template('purchase.html', purchases=purchases)
+
+
+
+if __name__ == "__main__":   
+    app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # @app.route('/home',methods = ['GET'])
 # def home():
@@ -71,8 +180,3 @@ def delete_item(item_id):
 
 #         result.sort(key=lambda x: x["id"])
 #     return render_template('index.html', name=existing.company_name, balance=existing.cash_balance, items=result)
-
-
-
-if __name__ == "__main__":   
-    app.run(debug=True)

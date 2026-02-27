@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Item</title>
+</head>
+<body>
+
+    <h2>Edit Item</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div style="color:red;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <input type="text" name="item_input" value="{{ item.item_name }}">
+        <button type="submit">Update</button>
+    </form>
+
+    <br>
+    <button type="button" onclick="window.location.href='/home'">Back to Home</a>
+
+</body>
+</html>
