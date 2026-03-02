@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit.css') }}">
+</head>
+<body>
+    
+</body>
+</html>
+<body>
+    <div class="container">
+
+        <h2>Edit Item</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="text" name="item_input" value="{{ item.item_name }}">
+            <button type="submit">Update</button>
+        </form>
+
+        <button class="back-btn" type="button" onclick="window.location.href='/home'">
+            Back to Home
+        </button>
+
+    </div>
+</body>

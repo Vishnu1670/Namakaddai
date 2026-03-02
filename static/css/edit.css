@@ -1,0 +1,63 @@
+/* Center the page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main container */
+.container {
+    background: white;
+    padding: 30px;
+    width: 350px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Heading */
+h2 {
+    margin-bottom: 20px;
+    color: #0f5f7d;
+}
+
+/* Input field */
+form input {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+form button,
+.back-btn {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Update button */
+form button {
+    background-color: #0f5f7d;
+    color: white;
+}
+
+/* Back button */
+.back-btn {
+    margin-top: 10px;
+    background-color: #888;
+    color: white;
+}
+
+/* Flash message */
+.flash {
+    color: red;
+    margin-bottom: 10px;
+}
+body{
+    background-color: rgb(245, 244, 216);
+}

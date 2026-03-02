@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    padding: 20px;
+}
+
+#purchase-table {
+    width: 90%;
+    margin: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+table th,
+table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+table th {
+    background-color: #0f5f7d;
+    color: white;
+}
+
+/* Button under table */
+.home-btn-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.home-btn-container button {
+    padding: 8px 15px;
+    background-color: #0f5f7d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.home-btn-container button:hover {
+    background-color: #09485f;
+}
+body{
+    background-color: rgb(245, 244, 216);
+}

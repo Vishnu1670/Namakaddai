@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sales.css') }}">
+</head>
+
+<body>
+    <center><h3>Purchase History</h3></center>
+
+    <div id="purchase-table">
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>S.no</th>
+                <th>Sales ID </th>
+                <th>Time</th>
+                <th>Item ID</th>
+                <th>Quantity</th>
+                <th>Rate</th>
+                <th>Amount</th>
+            </tr>
+            
+            {% if Salese %}
+                {% for Sale in Salese %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{ Sale.sales_id }}</td>
+                    <td>{{ Sale.timestamp }}</td>
+                    <td>{{ Sale.item_id }}</td>
+                    <td>{{ Sale.qty }}</td>
+                    <td>{{ Sale.rate }}</td>
+                    <td>{{ Sale.amount }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>No purchase records found</td>
+                    
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+    <br>
+    <div class="home-btn-container">
+        <button type="button" onclick=" window.location.href='home'">Go back Home</button>
+    </div>
+    
+
+
+</body>
+</html>
